@@ -1,0 +1,13 @@
+{
+  "name": "react-native-qpay",
+  "version": "0.0.1",
+  "description": "QPay React Native SDK",
+  "main": "index.js",
+  "keywords": [
+    "qpay",
+    "react",
+    "react-native"
+  ],
+  "author": "",
+  "license": "ISC"
+}
