@@ -2,12 +2,45 @@
   "name": "react-native-qpay",
   "version": "0.0.1",
   "description": "QPay React Native SDK",
-  "main": "index.js",
+  "main": "lib/module/index.js",
   "keywords": [
     "qpay",
     "react",
     "react-native"
   ],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "react-native-webview": "^13.3.0"
+  },
+  "devDependencies": {
+    "react-native-builder-bob": "^0.21.3"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "react-native": "src/index.js",
+  "module": "lib/module/index.js",
+  "scripts": {
+    "build": "bob build"
+  },
+  "files": [
+    "src",
+    "lib",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__"
+  ],
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "module"
+    ]
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/"
+  ]
 }
