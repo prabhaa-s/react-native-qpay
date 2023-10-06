@@ -4,14 +4,16 @@ import WebView from 'react-native-webview';
 import QPayContext from './QPayContext';
 
 const QPayProvider = ({ children }) => {
-  const [uri, setUri] = useState('https://pg.qpayindia.com/WWWS/Payment/PaymentDetails.aspx');
+  const [uri, setUri] = useState('https://pg.qpayindia.com/wwws/Payment/PaymentDetails_secure.aspx');
   const [body, setBody] = useState(null);
+  const [returnUri, setReturnUri] = useState(null);
 
-  const doTransaction = useCallback((request) => {
+  const doTransaction = useCallback((request, uri) => {
     const params = new URLSearchParams();
     Object.keys(request).forEach((key) => {
       params.append(key, request[key]);
     });
+    setReturnUri(uri);
     setBody(params.toString());
   }, []);
 
@@ -30,6 +32,14 @@ const QPayProvider = ({ children }) => {
               uri,
               method: 'POST',
               body,
+            }}
+            onNavigationStateChange={(navState) => {
+              if (navState.url === returnUri) {
+                setBody(null);
+              }
+            }}
+            onError={() => {
+              setBody(null);
             }}
           />
         </Modal>
