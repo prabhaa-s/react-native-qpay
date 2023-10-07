@@ -3,7 +3,7 @@ import QPayContext from '../components/QPayContext';
 
 const useQPay = (props) => {
   const { uri } = props || {};
-  const { doTransaction, setUri } = useContext(QPayContext);
+  const { doTransaction, setUri, status } = useContext(QPayContext);
 
   useEffect(() => {
     if (uri) {
@@ -13,6 +13,7 @@ const useQPay = (props) => {
 
   return {
     doTransaction,
+    status,
   };
 };
 
