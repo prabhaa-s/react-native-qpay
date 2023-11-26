@@ -35,6 +35,7 @@ const QPayProvider = ({ children }) => {
               uri,
               method: 'POST',
               body,
+              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             }}
             onNavigationStateChange={(navState) => {
               if (navState.url === returnUri) {
